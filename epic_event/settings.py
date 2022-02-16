@@ -16,7 +16,7 @@ import environ
 
 # Initialise environment variables
 env = environ.Env(
-    DEBUG=(bool,False)
+    DEBUG=(bool, False)
 )
 
 
@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'customer',
     'conversion',
+    'contract',
 ]
 
 MIDDLEWARE = [

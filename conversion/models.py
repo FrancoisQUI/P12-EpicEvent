@@ -15,7 +15,8 @@ class Conversion(models.Model):
 
     assigned_user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
-        on_delete=models.CASCADE)
+        on_delete=models.CASCADE
+    )
     customer = models.ForeignKey(
         Customer,
         on_delete=models.CASCADE,
