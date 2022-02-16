@@ -13,15 +13,17 @@ class Event(models.Model):
 
     assigned_user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+        blank=False,
     )
     contract = models.ForeignKey(
         Contract,
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+        blank=False,
     )
 
-    name = models.CharField(max_length=50)
-    status = models.CharField(max_length=2, choices=STATUS)
-    description = models.TextField()
-    start_date = models.DateTimeField()
-    end_date = models.DateTimeField()
+    name = models.CharField(max_length=50, blank=False)
+    status = models.CharField(max_length=2, choices=STATUS, blank=False, default="FE")
+    description = models.TextField(blank=False)
+    start_date = models.DateTimeField(blank=False)
+    end_date = models.DateTimeField(blank=True)

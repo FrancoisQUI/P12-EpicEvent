@@ -8,10 +8,10 @@ class Customer(models.Model):
         ("anon", "Anonymized"),
     }
 
-    company_name = models.CharField(max_length=50)
-    status = models.CharField(choices=CUSTOMER_STATUS, max_length=4)
-    mailing_address = models.CharField(max_length=200)
-    email = models.CharField(max_length=100)
+    company_name = models.CharField(max_length=50, blank=False)
+    status = models.CharField(choices=CUSTOMER_STATUS, max_length=4, blank=False)
+    mailing_address = models.CharField(max_length=200, blank=True)
+    email = models.CharField(max_length=100, blank=True)
 
 
 class Networks(models.Model):
@@ -21,7 +21,7 @@ class Networks(models.Model):
         ("LI", "Linkedin"),
     }
 
-    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
-    name = models.CharField(choices=NETWORK_NAME, max_length=2)
-    username = models.CharField(max_length=200)
+    customer = models.ForeignKey(Customer, on_delete=models.CASCADE, blank=False)
+    name = models.CharField(choices=NETWORK_NAME, max_length=2, blank=False)
+    username = models.CharField(max_length=200, blank=False)
 
