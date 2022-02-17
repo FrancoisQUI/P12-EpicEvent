@@ -1,3 +1,17 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Customer, Networks
+
+
+class CustomerAdmin(admin.ModelAdmin):
+    pass
+
+
+admin.site.register(Customer, CustomerAdmin)
+
+
+class NetworksAdmin(admin.ModelAdmin):
+    pass
+
+
+admin.site.register(Networks, NetworksAdmin)
