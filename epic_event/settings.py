@@ -148,4 +148,4 @@ VIEWSET_METHOD_REGISTRY = (
     "perform_destroy",
 )
 
-ROLE_GROUPS = env(ROLE_GROUPS)
+ROLE_GROUPS = env('ROLE_GROUPS')
