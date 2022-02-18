@@ -140,4 +140,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Groups and permission Management :
 
+VIEWSET_METHOD_REGISTRY = (
+    "get_queryset",
+    "get_serializer_class",
+    "perform_create",
+    "perform_update",
+    "perform_destroy",
+)
 
+ROLE_GROUPS = env(ROLE_GROUPS)
