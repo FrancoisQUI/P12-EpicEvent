@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'drf_roles',
     'customer',
     'conversion',
     'contract',
@@ -142,6 +144,6 @@ VIEWSET_METHOD_REGISTRY = (
     "perform_destroy",
 )
 
-ROLE_GROUPS = env('ROLE_GROUPS')
+# ROLE_GROUPS = env('ROLE_GROUPS')
 
 FIXTURE_DIRS = ['epic_event/fixtures']
