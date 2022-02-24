@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'drf_roles',
+    'django_extensions',
     'customer',
     'conversion',
     'contract',

@@ -15,11 +15,13 @@ class Contract(models.Model):
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
         blank=False,
+        related_name="author"
     )
     customer = models.ForeignKey(
         Customer,
         on_delete=models.CASCADE,
         blank=False,
+        related_name="customer"
     )
 
     signed = models.BooleanField(default=False, blank=False,)
