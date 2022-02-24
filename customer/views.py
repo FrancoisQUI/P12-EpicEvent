@@ -1,5 +1,5 @@
 from rest_framework import viewsets
-from rest_framework.permissions import DjangoObjectPermissions
+from rest_framework.permissions import DjangoObjectPermissions, IsAuthenticated
 from drf_roles.mixins import RoleViewSetMixin
 
 from .serializers import CustomerSerializer, NetworksSerializer
@@ -9,7 +9,7 @@ from .models import Customer, Networks
 class CustomerViewSet(RoleViewSetMixin, viewsets.ModelViewSet):
     model = Customer
     serializer_class = CustomerSerializer
-    permission_classes = [DjangoObjectPermissions]
+    permission_classes = [DjangoObjectPermissions, IsAuthenticated]
 
     def get_queryset_for_admin(self) -> object:
         return Customer.objects.all()

@@ -1,5 +1,5 @@
 from rest_framework.viewsets import ModelViewSet
-from rest_framework.permissions import DjangoObjectPermissions
+from rest_framework.permissions import DjangoObjectPermissions, IsAuthenticated
 from drf_roles.mixins import RoleViewSetMixin
 
 from .serializers import ConversionSerializer
@@ -9,7 +9,7 @@ from .models import Conversion
 class ConversionViewSet(RoleViewSetMixin, ModelViewSet):
     model = Conversion
     serializer_class = ConversionSerializer
-    permission_classes = [DjangoObjectPermissions]
+    permission_classes = [DjangoObjectPermissions, IsAuthenticated]
 
     def get_queryset_for_admin(self) -> object:
         return Conversion.objects.all()

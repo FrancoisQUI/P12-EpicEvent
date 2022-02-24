@@ -1,5 +1,5 @@
 from rest_framework.viewsets import ModelViewSet
-from rest_framework.permissions import DjangoObjectPermissions
+from rest_framework.permissions import DjangoObjectPermissions, IsAuthenticated
 from drf_roles.mixins import RoleViewSetMixin
 
 from .serializers import ContractSerializer
@@ -9,7 +9,7 @@ from .models import Contract
 class ContractViewSet(RoleViewSetMixin, ModelViewSet):
     model = Contract
     serializer_class = ContractSerializer
-    permission_classes = [DjangoObjectPermissions]
+    permission_classes = [DjangoObjectPermissions, IsAuthenticated]
 
     def get_queryset_for_admin(self) -> object:
         return Contract.objects.all()
