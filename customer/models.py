@@ -13,6 +13,9 @@ class Customer(models.Model):
     mailing_address = models.CharField(max_length=200, blank=True)
     email = models.CharField(max_length=100, blank=True)
 
+    def __str__(self):
+        return self.company_name
+
 
 class Networks(models.Model):
     NETWORK_NAME = {
@@ -24,4 +27,8 @@ class Networks(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE, blank=False)
     name = models.CharField(choices=NETWORK_NAME, max_length=2, blank=False)
     username = models.CharField(max_length=200, blank=False)
+
+    class Meta:
+        verbose_name_plural = "Networks"
+
 

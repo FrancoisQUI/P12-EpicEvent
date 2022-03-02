@@ -4,14 +4,14 @@ from .models import Customer, Networks
 
 
 class CustomerAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('id', 'company_name', 'status')
 
 
 admin.site.register(Customer, CustomerAdmin)
 
 
 class NetworksAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('customer', 'id', 'name')
 
 
 admin.site.register(Networks, NetworksAdmin)

@@ -11,10 +11,10 @@ class ContractViewSet(RoleViewSetMixin, ModelViewSet):
     serializer_class = ContractSerializer
     permission_classes = [DjangoObjectPermissions, IsAuthenticated]
 
-    def get_queryset_for_admin(self) -> object:
+    def get_queryset_for_admin(self):
         return Contract.objects.all()
 
-    def get_queryset_for_management(self) -> object:
+    def get_queryset_for_management(self):
         return Contract.objects.all()
 
     def get_queryset_for_sales(self):

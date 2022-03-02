@@ -21,16 +21,13 @@ class CustomerViewSet(RoleViewSetMixin, viewsets.ModelViewSet):
         return Customer.objects.all()
 
     def get_queryset_for_support(self):
-        return Customer.objects.filter(contract__event__assigned_user=self.request.user).distinct()
-
-    def get_queryset(self):
-        return Customer.objects.none()
+        return Customer.objects.filter(customer__event__assigned_user=self.request.user).distinct()
 
 
 class NetworksViewSet(RoleViewSetMixin, viewsets.ModelViewSet):
     model = Networks
     serializer_class = NetworksSerializer
-    permission_classes = [DjangoObjectPermissions]
+    permission_classes = [DjangoObjectPermissions, IsAuthenticated]
 
     def get_queryset_for_admin(self) -> object:
         return Networks.objects.all()
@@ -44,5 +41,3 @@ class NetworksViewSet(RoleViewSetMixin, viewsets.ModelViewSet):
     def get_queryset_for_support(self):
         return Networks.objects.filter(contract__event__assigned_user=self.request.user).distinct()
 
-    def get_queryset(self):
-        return Networks.objects.none()
