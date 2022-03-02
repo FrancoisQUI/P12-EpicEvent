@@ -4,7 +4,7 @@ from .models import Conversion
 
 
 class ConversionAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('id', 'customer', 'medium')
 
 
 admin.site.register(Conversion, ConversionAdmin)

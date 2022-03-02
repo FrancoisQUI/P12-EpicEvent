@@ -22,6 +22,3 @@ class ConversionViewSet(RoleViewSetMixin, ModelViewSet):
 
     def get_queryset_for_support(self):
         return Conversion.objects.none()
-
-    def get_queryset(self):
-        return Conversion.objects.none()

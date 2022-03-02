@@ -29,4 +29,5 @@ class Conversion(models.Model):
     creation_date = models.DateTimeField(auto_now_add=True, blank=False)
     validate_date = models.DateTimeField(blank=True)
 
-
+    def __str__(self):
+        return f"{self.customer} - {self.medium} - {self.creation_date}"

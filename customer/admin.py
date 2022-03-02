@@ -11,7 +11,7 @@ admin.site.register(Customer, CustomerAdmin)
 
 
 class NetworksAdmin(admin.ModelAdmin):
-    list_display = ('customer', 'id', 'name')
+    list_display = ('id', 'customer', 'name')
 
 
 admin.site.register(Networks, NetworksAdmin)

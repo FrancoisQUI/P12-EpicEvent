@@ -8,7 +8,7 @@ from event.views import EventViewSet
 from contract.views import ContractViewSet
 
 customer_router = routers.SimpleRouter()
-customer_router.register(r'customer', CustomerViewSet, basename="customer")
+customer_router.register(r'customer', CustomerViewSet, basename="custometer")
 
 conversion_router = routers.SimpleRouter()
 conversion_router.register(r'conversion', ConversionViewSet, basename="conversion")
