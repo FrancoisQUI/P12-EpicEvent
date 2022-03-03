@@ -22,6 +22,3 @@ class EventViewSet(RoleViewSetMixin, ModelViewSet):
 
     def get_queryset_for_support(self):
         return Event.objects.filter(assigned_user=self.request.user).distinct()
-
-    def get_queryset(self):
-        return Event.objects.none()
