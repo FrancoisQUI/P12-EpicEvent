@@ -4,7 +4,7 @@ from .models import Contract
 
 
 class ContractAdmin(admin.ModelAdmin):
-    pass
+    list_display = ("customer", "status", "creation_date")
 
 
 admin.site.register(Contract, ContractAdmin)

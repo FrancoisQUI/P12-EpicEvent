@@ -23,5 +23,3 @@ class ContractViewSet(RoleViewSetMixin, ModelViewSet):
     def get_queryset_for_support(self):
         return Contract.objects.filter()
 
-    def get_queryset(self):
-        return Contract.objects.none()
