@@ -27,7 +27,7 @@ class Conversion(models.Model):
     medium = models.CharField(max_length=2, choices=MEDIUM, blank=False)
     description = models.TextField(blank=False)
     creation_date = models.DateTimeField(auto_now_add=True, blank=False)
-    validate_date = models.DateTimeField(blank=True)
+    validate_date = models.DateTimeField(null=True, blank=True)
 
     def __str__(self):
         return f"{self.customer} - {self.medium} - {self.creation_date}"

@@ -28,5 +28,5 @@ class Contract(models.Model):
     status = models.CharField(choices=STATUS, default="Dr", max_length=2, blank=False,)
     description = models.TextField(blank=True,)
     creation_date = models.DateTimeField(auto_now_add=True, blank=False)
-    signed_date = models.DateTimeField(blank=True)
+    signed_date = models.DateTimeField(blank=True, null=True)
     price = models.IntegerField(blank=False)

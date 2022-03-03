@@ -6,13 +6,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('contract', '0001_initial'),
+        ('event', '0001_initial'),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='contract',
+            model_name='event',
             name='status',
-            field=models.CharField(choices=[('Dr', 'Draft'), ('SC', 'Send to customer'), ('OK', 'Signed')], default='Dr', max_length=2),
+            field=models.CharField(choices=[('OE', 'Over Event'), ('PE', 'Pending Event'), ('FE', 'Future Event')], default='FE', max_length=2),
         ),
     ]
