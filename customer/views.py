@@ -1,12 +1,13 @@
-from rest_framework import viewsets
+from rest_framework.viewsets import ModelViewSet
 from rest_framework.permissions import DjangoObjectPermissions, IsAuthenticated
 from drf_roles.mixins import RoleViewSetMixin
+from rest_framework_extensions.routers import NestedRouterMixin
 
 from .serializers import CustomerSerializer, NetworksSerializer
 from .models import Customer, Networks
 
 
-class CustomerViewSet(RoleViewSetMixin, viewsets.ModelViewSet):
+class CustomerViewSet(NestedRouterMixin, RoleViewSetMixin, ModelViewSet):
     model = Customer
     serializer_class = CustomerSerializer
     permission_classes = [DjangoObjectPermissions, IsAuthenticated]
@@ -24,7 +25,7 @@ class CustomerViewSet(RoleViewSetMixin, viewsets.ModelViewSet):
         return Customer.objects.filter(customer__event__assigned_user=self.request.user).distinct()
 
 
-class NetworksViewSet(RoleViewSetMixin, viewsets.ModelViewSet):
+class NetworksViewSet(NestedRouterMixin, RoleViewSetMixin, ModelViewSet):
     model = Networks
     serializer_class = NetworksSerializer
     permission_classes = [DjangoObjectPermissions, IsAuthenticated]

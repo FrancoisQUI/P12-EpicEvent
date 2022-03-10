@@ -4,7 +4,10 @@
 
 ## Stack
 
-### Django
+### Requirements :
+    - Python 3.x
+    - Django 4.02 =<
+    - Postgresql
 
 ### DRF : Django Rest Framework
 

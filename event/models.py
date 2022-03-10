@@ -26,4 +26,4 @@ class Event(models.Model):
     status = models.CharField(max_length=2, choices=STATUS, blank=False, default="FE")
     description = models.TextField(blank=False)
     start_date = models.DateTimeField(blank=False)
-    end_date = models.DateTimeField(blank=True)
+    end_date = models.DateTimeField(blank=True, null=True)
