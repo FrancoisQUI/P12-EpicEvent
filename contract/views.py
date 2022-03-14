@@ -12,7 +12,9 @@ class ContractViewSet(RoleViewSetMixin, ModelViewSet):
     serializer_class = ContractSerializer
     permission_classes = [DjangoObjectPermissions, IsAuthenticated]
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['status', 'signed', 'author', 'customer']
+    filterset_fields = ['status', 'signed', 'author', 'customer',
+                        'customer__company_name', 'customer__email',
+                        'creation_date', 'price']
 
     def get_queryset_for_admin(self):
         return Contract.objects.all()

@@ -13,7 +13,7 @@ class CustomerViewSet(NestedRouterMixin, RoleViewSetMixin, ModelViewSet):
     serializer_class = CustomerSerializer
     permission_classes = [DjangoObjectPermissions, IsAuthenticated]
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['status']
+    filterset_fields = ['status', 'email', 'company_name']
 
     def get_queryset_for_admin(self) -> object:
         return Customer.objects.all()

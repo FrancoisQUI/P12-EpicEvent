@@ -12,7 +12,8 @@ class EventViewSet(RoleViewSetMixin, ModelViewSet):
     serializer_class = EventSerializer
     permission_classes = [DjangoObjectPermissions, IsAuthenticated]
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['status', 'assigned_user', 'contract__customer', ]
+    filterset_fields = ['status', 'assigned_user', 'contract__customer',
+                        'contract__customer__company_name', 'start_date', 'end_date']
 
     def get_queryset_for_admin(self) -> object:
         return Event.objects.all()
