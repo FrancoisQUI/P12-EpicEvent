@@ -1,6 +1,7 @@
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.permissions import DjangoObjectPermissions, IsAuthenticated
 from drf_roles.mixins import RoleViewSetMixin
+from django_filters.rest_framework import DjangoFilterBackend
 
 from .serializers import EventSerializer
 from .models import Event
@@ -10,6 +11,8 @@ class EventViewSet(RoleViewSetMixin, ModelViewSet):
     model = Event
     serializer_class = EventSerializer
     permission_classes = [DjangoObjectPermissions, IsAuthenticated]
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['status', 'assigned_user', 'contract__customer', ]
 
     def get_queryset_for_admin(self) -> object:
         return Event.objects.all()

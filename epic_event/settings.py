@@ -13,6 +13,7 @@ import os.path
 from pathlib import Path
 import logging
 
+
 import environ
 
 # Initialise environment variables
@@ -46,6 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'drf_roles',
+    'django_filters',
     'django_extensions',
     'customer',
     'conversion',
@@ -62,6 +64,11 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
+}
+
 
 ROOT_URLCONF = 'epic_event.urls'
 

@@ -30,5 +30,3 @@ class Networks(models.Model):
 
     class Meta:
         verbose_name_plural = "Networks"
-
-
