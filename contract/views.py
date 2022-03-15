@@ -10,7 +10,7 @@ from .models import Contract
 class ContractViewSet(RoleViewSetMixin, ModelViewSet):
     model = Contract
     serializer_class = ContractSerializer
-    permission_classes = [DjangoObjectPermissions, IsAuthenticated]
+    permission_classes = [IsAuthenticated]
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['status', 'signed', 'author', 'customer',
                         'customer__company_name', 'customer__email',

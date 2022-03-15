@@ -10,7 +10,7 @@ from .models import Event
 class EventViewSet(RoleViewSetMixin, ModelViewSet):
     model = Event
     serializer_class = EventSerializer
-    permission_classes = [DjangoObjectPermissions, IsAuthenticated]
+    permission_classes = [IsAuthenticated]
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['status', 'assigned_user', 'contract__customer',
                         'contract__customer__company_name', 'start_date', 'end_date']

@@ -10,7 +10,7 @@ from .models import Conversion
 class ConversionViewSet(RoleViewSetMixin, ModelViewSet):
     model = Conversion
     serializer_class = ConversionSerializer
-    permission_classes = [DjangoObjectPermissions, IsAuthenticated]
+    permission_classes = [IsAuthenticated]
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['medium', 'assigned_user', 'customer']
 

@@ -11,14 +11,14 @@ from .models import Customer, Networks
 class CustomerViewSet(NestedRouterMixin, RoleViewSetMixin, ModelViewSet):
     model = Customer
     serializer_class = CustomerSerializer
-    permission_classes = [DjangoObjectPermissions, IsAuthenticated]
+    permission_classes = [IsAuthenticated]
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['status', 'email', 'company_name']
 
-    def get_queryset_for_admin(self) -> object:
+    def get_queryset_for_admin(self):
         return Customer.objects.all()
 
-    def get_queryset_for_management(self) -> object:
+    def get_queryset_for_management(self):
         return Customer.objects.all()
 
     def get_queryset_for_sales(self):
