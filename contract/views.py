@@ -10,21 +10,21 @@ from .models import Contract
 class ContractViewSet(RoleViewSetMixin, ModelViewSet):
     model = Contract
     serializer_class = ContractSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [DjangoObjectPermissions, IsAuthenticated]
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['status', 'signed', 'author', 'customer',
                         'customer__company_name', 'customer__email',
                         'creation_date', 'price']
 
-    def get_queryset_for_admins(self):
+    def get_queryset_for_admin(self):
         return Contract.objects.all()
 
-    def get_queryset_for_managements(self):
+    def get_queryset_for_management(self):
         return Contract.objects.all()
 
     def get_queryset_for_sales(self):
         return Contract.objects.all()
 
-    def get_queryset_for_supports(self):
-        return Contract.objects.filter()
+    def get_queryset_for_support(self):
+        return Contract.objects.filter(event__assigned_user=self.request.user).distinct()
 

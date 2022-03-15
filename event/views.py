@@ -15,14 +15,14 @@ class EventViewSet(RoleViewSetMixin, ModelViewSet):
     filterset_fields = ['status', 'assigned_user', 'contract__customer',
                         'contract__customer__company_name', 'start_date', 'end_date']
 
-    def get_queryset_for_admins(self) -> object:
+    def get_queryset_for_admin(self) -> object:
         return Event.objects.all()
 
-    def get_queryset_for_managements(self) -> object:
+    def get_queryset_for_management(self) -> object:
         return Event.objects.all()
 
     def get_queryset_for_sales(self):
         return Event.objects.all()
 
-    def get_queryset_for_supports(self):
+    def get_queryset_for_support(self):
         return Event.objects.filter(assigned_user=self.request.user).distinct()

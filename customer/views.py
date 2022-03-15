@@ -24,7 +24,7 @@ class CustomerViewSet(NestedRouterMixin, RoleViewSetMixin, ModelViewSet):
     def get_queryset_for_sales(self):
         return Customer.objects.all()
 
-    def get_queryset_for_supports(self):
+    def get_queryset_for_support(self):
         return Customer.objects.filter(customer__event__assigned_user=self.request.user).distinct()
 
 
@@ -35,14 +35,14 @@ class NetworksViewSet(NestedRouterMixin, RoleViewSetMixin, ModelViewSet):
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['name']
 
-    def get_queryset_for_admins(self) -> object:
+    def get_queryset_for_admin(self):
         return Networks.objects.all()
 
-    def get_queryset_for_managements(self) -> object:
+    def get_queryset_for_management(self):
         return Networks.objects.all()
 
     def get_queryset_for_sales(self):
         return Networks.objects.all()
 
-    def get_queryset_for_supports(self):
+    def get_queryset_for_support(self):
         return Networks.objects.filter(contract__event__assigned_user=self.request.user).distinct()
