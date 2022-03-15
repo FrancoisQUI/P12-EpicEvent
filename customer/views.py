@@ -15,34 +15,34 @@ class CustomerViewSet(NestedRouterMixin, RoleViewSetMixin, ModelViewSet):
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['status', 'email', 'company_name']
 
-    def get_queryset_for_admin(self):
+    def get_queryset_for_admins(self):
         return Customer.objects.all()
 
-    def get_queryset_for_management(self):
+    def get_queryset_for_managements(self):
         return Customer.objects.all()
 
     def get_queryset_for_sales(self):
         return Customer.objects.all()
 
-    def get_queryset_for_support(self):
+    def get_queryset_for_supports(self):
         return Customer.objects.filter(customer__event__assigned_user=self.request.user).distinct()
 
 
 class NetworksViewSet(NestedRouterMixin, RoleViewSetMixin, ModelViewSet):
     model = Networks
     serializer_class = NetworksSerializer
-    permission_classes = [DjangoObjectPermissions, IsAuthenticated]
+    permission_classes = [IsAuthenticated]
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['name']
 
-    def get_queryset_for_admin(self) -> object:
+    def get_queryset_for_admins(self) -> object:
         return Networks.objects.all()
 
-    def get_queryset_for_management(self) -> object:
+    def get_queryset_for_managements(self) -> object:
         return Networks.objects.all()
 
     def get_queryset_for_sales(self):
         return Networks.objects.all()
 
-    def get_queryset_for_support(self):
+    def get_queryset_for_supports(self):
         return Networks.objects.filter(contract__event__assigned_user=self.request.user).distinct()

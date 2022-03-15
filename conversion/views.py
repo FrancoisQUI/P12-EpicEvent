@@ -14,14 +14,14 @@ class ConversionViewSet(RoleViewSetMixin, ModelViewSet):
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['medium', 'assigned_user', 'customer']
 
-    def get_queryset_for_admin(self) -> object:
+    def get_queryset_for_admins(self) -> object:
         return Conversion.objects.all()
 
-    def get_queryset_for_management(self) -> object:
+    def get_queryset_for_managements(self) -> object:
         return Conversion.objects.all()
 
     def get_queryset_for_sales(self):
         return Conversion.objects.all()
 
-    def get_queryset_for_support(self):
+    def get_queryset_for_supports(self):
         return Conversion.objects.none()

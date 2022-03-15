@@ -16,15 +16,15 @@ class ContractViewSet(RoleViewSetMixin, ModelViewSet):
                         'customer__company_name', 'customer__email',
                         'creation_date', 'price']
 
-    def get_queryset_for_admin(self):
+    def get_queryset_for_admins(self):
         return Contract.objects.all()
 
-    def get_queryset_for_management(self):
+    def get_queryset_for_managements(self):
         return Contract.objects.all()
 
     def get_queryset_for_sales(self):
         return Contract.objects.all()
 
-    def get_queryset_for_support(self):
+    def get_queryset_for_supports(self):
         return Contract.objects.filter()
 
